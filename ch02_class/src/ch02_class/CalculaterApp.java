@@ -11,12 +11,11 @@ public class CalculaterApp {
 		
 	
 	// page 55 - Scanner
-	@SuppressWarnings("resource")
 	Scanner sc = new Scanner(System.in);
 	
 	// page 69 while loop start
 	String choice = "y";
-	while (choice.equalsIgnoreCase("y")) {
+	while (choice.equalsIgnoreCase("y") {
 	System.out.print("Enter a whole number:");
 	int n1 = sc.nextInt();
 	System.out.print("Enter another whole number:");
