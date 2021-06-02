@@ -16,6 +16,21 @@ public class ClassDemoApp {
 		double d1 = 11.1;
 		double d2 = 21.444;
 		
+		//casting page 46
+		
+		int a =5;
+		double b = 8.3;
+		//int sum = a + b; -> invalid
+		double sum2 = a + b;
+		System.out.println("sum2 = "+sum2);
+		int sum3 = a + (int)b;
+		
+		// page 47 increment a counter variable
+		counter = 1;
+		counter = counter + 1;
+		counter += 1;
+		
+		
 		
 		counter = 2;
 		unitPrice = 13.99;
