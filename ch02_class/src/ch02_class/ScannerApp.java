@@ -23,20 +23,35 @@ public class ScannerApp {
 	String sentence4 = sc.nextLine();
 	System.out.println(sentence4);
 	
+	// page 67 if else
 	
+	System.out.println("Enter a whole no: ");
+	int n1 =  sc.nextInt();
+	 
+	// determine if user entry is negative even or odd
+	if (n1 < 0) {
+		System.out.println("your entry is negative"); }
+		
+		else if (n1 % 2 == 0) {System.out.println("Your entry is even"); }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+		else {
+			System.out.println("Your entry is odd"); }
+		
+		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-}
+

@@ -5,12 +5,18 @@ import java.util.Scanner;
 public class CalculaterApp {
 
 	public static void main(String[] args) {
-	System.out.println("Welcome to the calculater app");
+		
+		System.out.println("Welcome to the calculater app");
+	
+		
 	
 	// page 55 - Scanner
+	@SuppressWarnings("resource")
 	Scanner sc = new Scanner(System.in);
 	
-	
+	// page 69 while loop start
+	String choice = "y";
+	while (choice.equalsIgnoreCase("y")) {
 	System.out.print("Enter a whole number:");
 	int n1 = sc.nextInt();
 	System.out.print("Enter another whole number:");
@@ -34,18 +40,12 @@ public class CalculaterApp {
 	int modulas = n2%n1;
 	System.out.println("modulas = "+modulas);
 	
-	//casting page 46
+	// while loop end
+	System.out.println("Continue? (y/n)");
+	choice = sc.next();
 	
 	
-	
-	// page 48 Strings
-	
-	String fName = "Bob";
-	String mName = "Nesta";
-	String lName = "Marley";
-	String fullName = fName + " " + mName + " " + lName;
-	System.out.println(fullName);
-	
+	}
 	
 	
 	
