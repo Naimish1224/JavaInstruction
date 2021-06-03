@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Scanner;
 
@@ -68,7 +69,21 @@ public class Ch3_project1 {
 		BigDecimal discountPct = new BigDecimal(".1");
 		final BigDecimal SALES_TAX_PCT = new BigDecimal(".05");
 		BigDecimal discountAmt = subtotal.multiply(discountPct);
-		discountAmt = discountAmt.setScale(2, )
+		discountAmt = discountAmt.setScale(2, RoundingMode.HALF_UP);
+		
+		BigDecimal totalBeforeTax = subtotal.subtract(discountAmt);
+		BigDecimal salesTax = totalBeforeTax.multiply(SALES_TAX_PCT);
+		
+		BigDecimal Total = totalBeforeTax.add(salesTax);
+		
+		System.out.println("Subtotal: "+subtotal);
+		System.out.println("Discount Pct: "+discountPct);
+		System.out.println("Discount Amt: "+discountAmt);
+		System.out.println("Total Before Tax: "+totalBeforeTax);
+		System.out.println("Sales Tax: "+salesTax);
+		System.out.println("Total: \t "+Total);
+		
+		
 		
 		
 		
