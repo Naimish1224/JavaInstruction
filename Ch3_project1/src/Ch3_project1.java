@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Ch3_project1 {
@@ -36,6 +38,47 @@ public class Ch3_project1 {
 		
 		System.out.println(Math.min(11.7, 23.4));
 		System.out.println(Math.max(11.7, 23.4));
+		
+		// random
+		System.out.println(Math.random());
+		// die roll (1-6)
+		int die = (int)(Math.random()*6)+1;
+		System.out.println("die = "+die);
+		//random # 1 to 100
+		int rand = (int)(Math.random()*100)+1;
+		System.out.println("rand = "+rand);
+		
+		
+		//numberFormat - currency  p.105
+		double price = 11222.575;
+		NumberFormat currency = NumberFormat.getCurrencyInstance();
+		System.out.println("formated price = "+currency.format(price));
+		
+		double majority = .505;
+		NumberFormat percent2 = NumberFormat.getPercentInstance();
+		System.out.println(percent2.format(majority));
+		
+		double miles = 15341.253;
+		NumberFormat number = NumberFormat.getNumberInstance();
+		number.setMaximumFractionDigits(1);
+		System.out.println(number.format(miles));
+		
+		// Bigdecimal p 133
+		BigDecimal subtotal = new BigDecimal("100.05");
+		BigDecimal discountPct = new BigDecimal(".1");
+		final BigDecimal SALES_TAX_PCT = new BigDecimal(".05");
+		BigDecimal discountAmt = subtotal.multiply(discountPct);
+		discountAmt = discountAmt.setScale(2, )
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
