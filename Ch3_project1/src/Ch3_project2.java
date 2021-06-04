@@ -25,7 +25,6 @@ public class Ch3_project2 {
 		
 		System.out.println(z);
 		
-		// have to fix with hour and minutes out put separate
 		
 		
 		
