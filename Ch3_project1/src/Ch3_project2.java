@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class Ch3_project2 {
 
 	public static void main(String[] args) {
@@ -9,21 +10,22 @@ public class Ch3_project2 {
 		System.out.println("Welcome to the Travel Time Calculator!!");
 		
 		System.out.print("Enter Miles: ");
-		double miles = sc.nextInt();
+		double miles = sc.nextDouble();
 		
 		System.out.print("Enter miles per hour: ");
-		double mph = sc.nextInt();
+		double mph = sc.nextDouble();
 		
 		double time = ((mph) / 60);
-		double y = (miles / time );
+		double y = (miles / time);
 		
-		double z = (y / 60);
-		 
+		double z = ((((y / 60) * 1000)) / 1000);
+		
+		
 		
 		
 		System.out.println(z);
 		
-		// have to fix with hour and minutes out put separately
+		// have to fix with hour and minutes out put separate
 		
 		
 		

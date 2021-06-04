@@ -29,6 +29,7 @@ public class Project_ch2 {
 			
 			System.out.print("Enter numerical grade: ");
 			int G1 = sc.nextInt();
+			
 			if (G1 >= 90 && G1 <= 100) { 
 				System.out.println(Grade1);}
 			if (G1 >= 88 && G1 <= 89) {

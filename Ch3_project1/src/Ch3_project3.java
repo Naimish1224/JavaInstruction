@@ -1,4 +1,6 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.Scanner;
 import java.math.BigDecimal;
 
@@ -12,14 +14,25 @@ public class Ch3_project3 {
 		System.out.println("Welcome to the Interest Calculator!!");
 
 		System.out.print("Enter your loan amount: ");
-	    double loan = sc.nextInt();
+	    BigDecimal loan = sc.nextBigDecimal();
 		
 		System.out.print("Enter your interest rate: ");
-		double interest = sc.nextInt();
+		BigDecimal interestRate = sc.nextBigDecimal();
 		
-		double i = (interest * loan / 10);
+		BigDecimal interest = loan.multiply(interestRate);
+		interest = interest.setScale(2, RoundingMode.HALF_UP);
 		
-		System.out.println(i);
+		
+		NumberFormat curr = NumberFormat.getCurrencyInstance();
+		NumberFormat pct = NumberFormat.getPercentInstance();
+		pct.setMaximumFractionDigits(3);
+		
+		
+		System.out.println("Loan Amount: " +curr.format(loan));
+		System.out.println("Interestrate: " +pct.format(interestRate));
+		System.out.println("Interest: " +curr.format(interest));
+		
+
 		
 		
 
