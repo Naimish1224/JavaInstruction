@@ -33,6 +33,8 @@ public class Ch3_project3_1 {
 		}
 		while(reader.equals("y"));
 		
+		// have to fix while loop
+		
 		
 	}
 		
