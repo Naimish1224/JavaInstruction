@@ -18,15 +18,21 @@ public class Ch3_project2 {
 		double y = (miles / time );
 		
 		double z = (y / 60);
+		 
 		
 		
 		System.out.println(z);
 		
-		// have to fix with hour and minutes out put seperatly
+		// have to fix with hour and minutes out put separately
 		
 		
 		
 
+	}
+
+	private static double Time(double d) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	private static double String(double d) {
