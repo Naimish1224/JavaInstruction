@@ -1,8 +1,11 @@
 import java.util.Scanner;
 
+
 public class Traffic_light_project {
+	
 
 	private static final String String = null;
+	
 
 	public static void main(String[] args) {
 		
@@ -20,7 +23,7 @@ public class Traffic_light_project {
 		
 		
 		if (color.equals("green")) { 
-			System.out.println("You can Go! ");
+			System.out.println("You can Proceed! ");
 		}
 		
 		
@@ -41,7 +44,7 @@ public class Traffic_light_project {
 			if (distance >= 30) {
 				System.out.println("Please Stop slowly! ");
 			}
-			else {System.out.println("Please Go with caution! ");
+			else {System.out.println("Please proceed with caution! ");
 			}
 		}
 		
