@@ -7,33 +7,52 @@ public class Traffic_light_project {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
+		String choice = "y";
+		while (choice.equalsIgnoreCase(choice)) {
+			
+		
 		System.out.println("Welcome to Traffic Light App!" );
-		System.out.println();
+		
 		
 		System.out.print("Enter the currentcolor of the light: ");
-		String color = sc.next();
+		String color = sc.next().toLowerCase();
 		
-		if (color.equals("Green")) { 
+		if (color.equals("green")) { 
 			System.out.println("You can Go! ");
 		}
 		
 		
-		if (color.equals("Red")) { 
-			System.out.println("Are you turning right? :");
+		
+		
+		else if (color.equals("red")) { 
+			System.out.print("Are you turning right? Yes/No? : ");
+			String yesno = sc.next();
+			if (yesno.equals("Yes")) {
+				System.out.println("Please turn right with caution! ");
+			}
+			else {System.out.println("Please Stop! ");
+			}
 		}
 		
 		
 		
-		if (color.equals("Yellow")) { 
+		else if (color.equals("yellow")) { 
 			System.out.print("How many yards away are you from Traffic Light? : ");
+			int distance = sc.nextInt();
+			if (distance > 30) {
+				System.out.println("Please Stop slowly! ");
+			}
+			else {System.out.println("Please Go with cautious! ");
+			}
 		}
 		
-		int distance = sc.nextInt();
-		if (distance > 30) {
-			System.out.println("Please Stop slowly! ");
-		}
-		else {System.out.println("Please Go with cautious! ");
-		}
+		System.out.print("Continue? (y/n): ");
+		choice = sc.next();
+		
+		
+		sc.close();
+		}}
 		
 	
 	
@@ -43,7 +62,7 @@ public class Traffic_light_project {
 	
 	
 	
-	}
+	
 		
 		
 		
@@ -65,6 +84,27 @@ public class Traffic_light_project {
 		
 
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	private static boolean Bollean(java.lang.String string2) {
 		// TODO Auto-generated method stub
