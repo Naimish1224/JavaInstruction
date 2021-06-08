@@ -26,18 +26,8 @@ public class DiceRoller {
 		}
 
 		sc.close();
-		System.out.println("Bye");
+		System.out.println("Good Luck!!");
 
-	}
-
-	private static String getNextString(Scanner sc, String prompt) {
-		System.out.print(prompt);
-		return sc.next();
-	}
-
-	private static int getNextInt(Scanner sc, String prompt) {
-		System.out.print(prompt);
-		return sc.nextInt();
 	}
 
 }
