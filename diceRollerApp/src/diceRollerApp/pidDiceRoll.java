@@ -1,33 +1,34 @@
 package diceRollerApp;
 
+import java.util.Scanner;
+
 public class pidDiceRoll {
 
 	public static void main(String[] args) {
-		
-		for (int d = 0; ; d++) {
-			int total = 0;
-		    int count = 0;
-		    int roll = (int)(Math.random() * 6 + 1);
-		    for (int j = 0; j < roll; j++) {
-		        count++;
-		    }
-		    if (roll == 1) {
-		    	System.out.println("Your dice rolled" +" "+ d +" "+"times!");
-		    	System.out.println(++count);
-		    	
-		    	return;
-		    		}
-		    System.out.println(count);
-		    
-		   
-		}
-		
+		System.out.println("Welcome to the Pig Dice Game, Good Luck!");
+		Scanner sc = new Scanner(System.in);
+		String choice = "y";
 		
 
+			int sum = 0;
+			System.out.println("Here we go!!!!");
+			for (int d = 1;; d++) {
+				int roll = (int) (Math.random() * 6 + 1);
+				sum = sum + roll;
+				if (roll == 1) {
+					System.out.println("Your dice rolled " + d + roll + " times");
+					System.out.println("Your Score is : " + sum);
+					int c = common(d);
+					System.out.println("Common roll was : " + c);
+					
+					return;
+				}
 
+			}
+		
 	}
 
-	private static int sum(int d) {
+	private static int common(int d) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

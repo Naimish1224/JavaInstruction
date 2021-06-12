@@ -2,17 +2,11 @@ package diceRollerApp;
 
 public class console {
 
-	public static Object log;
+	 public static String name;
 
-	public static char[] log(int d) {
-		
-		
-		return null;
+	// Using Console to input data from user
+	{ String name = System.console().readLine();
+
+    System.out.println("You entered string " + name);
 	}
-
-	public static char[] sum(int d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
