@@ -19,12 +19,18 @@ public class pidDiceRoll {
 				if (roll == 1) {
 					System.out.println("Your dice rolled " + d + " times");
 					System.out.println("Your Score is : " + sum);
-					System.out.print("Continue, y/n?: ");
+					System.out.print("Continue: y/n? ");
 					choice = sc.next();
+					if (choice.equalsIgnoreCase("y")) {
+						break;
 					}
-
+					System.out.println("Bye");
+					int average = (sum / d);
+					System.out.println("Your average roll was: " + average);
+				return;
+				}
 			}
 		}
-	}
+	}	
 
 }
