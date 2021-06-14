@@ -1,8 +1,10 @@
 package Business;
 
-public class Item {
-private int number;
-private String description;
+public class Item implements Comparable {
+
+	private int number;
+
+	private String description;
 
 public int getNumber() {
 	return number;
@@ -33,6 +35,19 @@ public Item() {
 @Override
 public String toString() {
 	return "Item [number=" + number + ", description=" + description + "]";
+}
+
+@Override
+public int compareTo(Object o) {
+	Item i = (Item)o;
+	int comp =0;
+	if(this.getNumber() < i.getNumber()) {
+		comp = -1;
+	}
+	else if(this.getNumber() > i.getNumber()) {
+		comp = 1;
+	}
+	return comp;
 }
 
 }

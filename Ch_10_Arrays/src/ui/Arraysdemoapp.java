@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.Arrays;
+
 import Business.Item;
 
 public class Arraysdemoapp {
@@ -51,6 +53,24 @@ public class Arraysdemoapp {
 	for(Item item: items) {
 		System.out.println(item);
 	}
+	
+	// arrays class
+	// is 2.35 in prices array, what position(index)
+	
+	System.out.println(Arrays.binarySearch(prices, 2.35));
+	
+	//sort an arrays
+	for(String n: names) {
+		System.out.println(n);
+	}
+	
+	System.out.println("sort the names...");
+	Arrays.sort(names);
+	
+	for(String n: names) {
+		System.out.println(n);
+	}
+	
 	
 	
 	
