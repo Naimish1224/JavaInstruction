@@ -1,4 +1,4 @@
-package diceRollerApp;
+package ui;
 
 public class console {
 

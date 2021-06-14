@@ -1,8 +1,8 @@
-package diceRollerApp;
+package ui;
 
 import java.util.Scanner;
 
-public class PigDiceRoll {
+public class PigDiceRollv2 {
 
 	public static void main(String[] args) {
 		System.out.println("|******************************************|");
