@@ -23,11 +23,12 @@ public class PigDiceRoll {
 				int sum = 0;
 				for (int d = 1;; d++) {
 					int roll = (int) ((Math.random() * 6) + 1);
+					// can be written as sum+=roll
 					sum = sum + roll;
 					if (roll == 1) {
 						totalrolls = totalrolls + d;
 						totalscore = totalscore + sum;
-						System.out.println("Your Score for game " + g + " is " + sum);
+//						System.out.println("Your Score for game " + g + " is " + sum);
 //						System.out.println("Total rolls in game " + g + " is " + d);
 						if (highestscore < sum) {
 							highestscore = sum;
