@@ -28,8 +28,6 @@ public class PigDiceRoll {
 					if (roll == 1) {
 						totalrolls = totalrolls + d;
 						totalscore = totalscore + sum;
-//						System.out.println("Your Score for game " + g + " is " + sum);
-//						System.out.println("Total rolls in game " + g + " is " + d);
 						if (highestscore < sum) {
 							highestscore = sum;
 						}
@@ -38,12 +36,10 @@ public class PigDiceRoll {
 				}
 			}
 			System.out.println("You played " + game + " games.");
-			System.out.println("Highest score is: " + highestscore);
 			System.out.println("Your dice rolled " +totalrolls+ " times in "+ game+" games.");
-			System.out.println("your average rolls per game is: " + (totalrolls / game));
-			System.out.println("your average score per game is: " + (totalscore / game));
-			System.out.println();
-			System.out.print("Continue: y/n? ");
+			System.out.println("Highest score was: " + highestscore);
+			System.out.println("Your average score per game is: " + (totalscore / game));
+			System.out.print("Want you play again?: y/n? ");
 			choice = sc.next();
 			}
 		sc.close();
