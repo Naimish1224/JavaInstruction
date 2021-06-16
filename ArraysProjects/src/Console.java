@@ -107,4 +107,8 @@ public class Console {
         }
         return d;
     }
+	public static String getLine(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
