@@ -24,7 +24,7 @@ public class ItemManagerApp {
 		System.out.println("Welcome to the Item Manager App!");
 		System.out.println();
 		int command = 0;
-		while (command != 9) {
+		while (command != 5) {
 			displayMenu();
 			command = Console.getInt("Command: ");
 			switch (command) {
@@ -39,6 +39,9 @@ public class ItemManagerApp {
 				if (items.size() < 4) {
 					int nbr = Console.getInt("No: ");
 					System.out.println(items.get(nbr-1) + " was found.");
+				}
+				else {
+					System.out.println("Item not found!");
 				}
 
 				break;
@@ -108,11 +111,6 @@ public class ItemManagerApp {
 		System.out.println("Bye!");
 	}
 	
-	private static boolean validateItemNumber(int nbr) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	private static void displayMenu() {
 		System.out.println("COMMAND MENU:");
 		System.out.println("==================");
