@@ -10,7 +10,7 @@ public class ItemManagerApp {
 	private static final String ITEM_NOT_FOUND = "No item found for id: ";
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to the Item Manager - Text file version");
+		System.out.println("Welcome to the Bmdb - Text file version");
 		System.out.println();
 		
 		//creating instance of the Itemtextfile should create our file
@@ -26,58 +26,58 @@ public class ItemManagerApp {
 			switch(command) {
 			case 1:
 			// get all
-				System.out.println("Get all items: ");
+				System.out.println("Get all Movies: ");
 				for (Item item: itemsDAO.getAll()) {
 					System.out.println(item);
 				}
 				break;
 			case 2:
-				System.out.println("Get items by id: ");
+				System.out.println("Get movie by id: ");
 			// get by id
 				int id = Console.getInt("ID: ");
 				Item item = itemsDAO.get(id);
 				if(item != null) {
-					System.out.println("Item Found: "+item);
+					System.out.println("Movie Found: "+item);
 				}
 				else {
 					System.out.println(ITEM_NOT_FOUND + id);
 				}
 				break;
 			case 3:
-				System.out.println("Add an item: ");
+				System.out.println("Add a Movie: ");
 			//add
 				id = Console.getInt("ID: ");
-				String desc = Console.getLine("Description: ");
+				String desc = Console.getLine("Movie Description: ");
 				if (itemsDAO.add(new Item(id, desc))) {
-					System.out.println("Item added!");
+					System.out.println("Movie added!");
 				}
 				else {
-					System.out.println("Error adding an item.");
+					System.out.println("Error adding a Movie.");
 				}
 				break;
 			case 4:
-				System.out.println("Update an item: ");
+				System.out.println("Update a Movie: ");
 			//update
 				id = Console.getInt("ID: ");
 				item = itemsDAO.get(id);
 				if(item != null) {
-					String newdesc = Console.getLine("New Discription: ");
+					String newdesc = Console.getLine("New Movie: ");
 					item.setDiscription(newdesc);
-					System.out.println("Item updated: ");
+					System.out.println("Movie updated: ");
 				}
 				else {
 					System.out.println(ITEM_NOT_FOUND + id);
 				}
 				break;
 			case 5:
-				System.out.println("Delete an item: ");
+				System.out.println("Delete a Movie: ");
 			//delete
 				id = Console.getInt("ID: ");
 				item = itemsDAO.get(id);
 				item = itemsDAO.get(id);
 				if(item != null) {
 					itemsDAO.delete(item);
-					System.out.println("Item deleted: "+item);
+					System.out.println("Movie deleted: "+item);
 				}
 				else {
 					System.out.println(ITEM_NOT_FOUND + id);
