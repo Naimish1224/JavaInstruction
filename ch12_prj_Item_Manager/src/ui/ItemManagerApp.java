@@ -61,9 +61,13 @@ public class ItemManagerApp {
 				System.out.println("=================");
 				int nbr = Console.getInt("No: ");
 				
-				if (validateItemNumber(nbr)) {
-					String name = Console.getString("Updated name: ");
-					items.get(nbr);
+				if (nbr == 1) {
+					String name1 = Console.getString( "Updated name: ");
+					Item name = Console.setdescription(name1);
+					System.out.println(items);
+					
+					
+					
 					System.out.println("Item number " + nbr + " was updated.");
 				} else {
 					System.out.println("Invalid item number.");
@@ -82,6 +86,7 @@ public class ItemManagerApp {
 				System.out.println("=================");
 				break;
 			case 5:
+			
 				// delete an item
 				// - prompt user for number to retrieve
 				// - loop through items and retrieve item

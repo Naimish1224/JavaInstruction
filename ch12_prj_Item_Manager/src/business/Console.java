@@ -111,4 +111,24 @@ public class Console {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public static Item getItem(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public static Item setItem(String name1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public static Item setItem(int nbr, String name1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public static Item setString(String name1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public static Item setdescription(String name1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

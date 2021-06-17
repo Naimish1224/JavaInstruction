@@ -1,7 +1,9 @@
+package ui;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-
+import com.util.Console;
 
 public class WizardInventoryApp {
 	static List<String> items;
@@ -67,6 +69,7 @@ public class WizardInventoryApp {
 
 	private static void editItem(int itemNbr) {
 		if (validateItemNumber(itemNbr)) {
+			
 			String name = Console.getLine("Updated name: ");
 			items.set((itemNbr - 1), name);
 			System.out.println("Item number " + itemNbr + " was updated.");

@@ -5,12 +5,36 @@ public class Console {
     
     private static Scanner sc = new Scanner(System.in);
 
+    /**
+     * 
+     * @param prompt Prompt the user for input 
+     * @return the next line from user input
+     */
     public static String getString(String prompt) {
         System.out.print(prompt);
-        String s = sc.next();  
-        sc.nextLine();  
+        String s = sc.next();  // read user entry
+        sc.nextLine();  // discard any other data entered on the line
         return s;
     }
+
+    /**
+     * 
+     * @param prompt Prompt the user for input
+     * @return The next line of input from the user
+     */
+    public static String getLine(String prompt) {
+        System.out.print(prompt);
+        String s = sc.nextLine();  // read user entry
+        //sc.nextLine();  // discard any other data entered on the line
+        return s;
+    }
+    
+    /**
+     * 
+     * @param prompt Prompt the user for input
+     * @param isRequired boolean determining if this input is required
+     * @return The next line of input from the user
+     */
     public static String getString(String prompt, boolean isRequired) {
         String s = "";
         boolean isValid = false;
@@ -25,6 +49,14 @@ public class Console {
         }
         return s;
     }
+
+    /**
+     * 
+     * @param prompt Prompt the user for input
+     * @param s1 The first acceptable string
+     * @param s2 The second acceptable string
+     * @return The value entered by the user
+     */
     public static String getString(String prompt, String s1, String s2) {
         String s = "";
         boolean isValid = false;
@@ -40,6 +72,11 @@ public class Console {
         return s;
     }
 
+    /**
+     * 
+     * @param prompt Prompt the user for input
+     * @return The integer entered by the user
+     */
     public static int getInt(String prompt) {
         int i = 0;
         boolean isValid = false;
@@ -56,17 +93,25 @@ public class Console {
         return i;
     }
 
+    /**
+     * This method will return a valid integer within the 
+     * min max range (inclusive).
+     * @param prompt Prompt the user for input
+     * @param min The minimum acceptable value
+     * @param max The maximum acceptable value
+     * @return The integer entered by the user
+     */
     public static int getInt(String prompt, int min, int max) {
         int i = 0;
         boolean isValid = false;
         while (!isValid) {
             i = getInt(prompt);
-            if (i <= min) {
+            if (i < min) {
                 System.out.println(
-                        "Error! Number must be greater than " + min + ".");
-            } else if (i >= max) {
+                        "Error! Number must be greater than or equal to " + min + ".");
+            } else if (i > max) {
                 System.out.println(
-                        "Error! Number must be less than " + max + ".");
+                        "Error! Number must be less than or equal to " + max + ".");
             } else {
                 isValid = true;
             }
@@ -74,6 +119,11 @@ public class Console {
         return i;
     }
 
+    /**
+     * 
+     * @param prompt Prompt the user for input
+     * @return The valid double entered by the user
+     */
     public static double getDouble(String prompt) {
         double d = 0;
         boolean isValid = false;
@@ -90,6 +140,13 @@ public class Console {
         return d;
     }
 
+    /**
+     * 
+     * @param prompt Prompt the user for input
+     * @param min The minimum acceptable value
+     * @param max The minimum acceptable value
+     * @return The valid double entered by the user
+     */
     public static double getDouble(String prompt, double min, double max) {
         double d = 0;
         boolean isValid = false;
