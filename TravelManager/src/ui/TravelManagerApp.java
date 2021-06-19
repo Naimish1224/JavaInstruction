@@ -1,23 +1,31 @@
 package ui;
 
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Random;
 
 import com.util.Console;
 
 
 public class TravelManagerApp {
 	private static final String ITEM_NOT_FOUND = "No item found for id: ";
-
+	private static final String LOCALTIME = "Local date & time there is: ";
+	private static final String BOOK = "Would you like to book it?";
+	private static final String CONFIRMATION = "Your flight is booked!!! "
+			+ "We have a hotel we can add to package for aditional discount? :";
+	private static final String NOFLIGHT = "We do not have any other flights available."
+			+ " Please try again later.";
+	private static final String DAYS = "how many days you would like to book it? :";
+	private static final String ENJOY ="Enjoy your travel!";
+	private static final String TOTALCOST = "Your total cost for package is ";
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Travel App!");
 		System.out.println();
 		LocalDateTime currentTimestamp = LocalDateTime.now();
-		LocalDate currentDate = LocalDate.now();
-		LocalDateTime dayLaterThanToday = currentTimestamp.withDayOfMonth(6);
 		LocalDateTime india = currentTimestamp.plus(9, ChronoUnit.HOURS);
-		LocalDateTime australia = currentTimestamp.plus(14, ChronoUnit.HOURS);
 		LocalDateTime dubai = currentTimestamp.plus(8, ChronoUnit.HOURS);
 		LocalDateTime africa = currentTimestamp.plus(6, ChronoUnit.HOURS);
 		LocalDateTime china = currentTimestamp.plus(12, ChronoUnit.HOURS);
@@ -48,8 +56,6 @@ public class TravelManagerApp {
 		double sflight = 920.63;
 		double dflight = 1801.3;
 		
-		
-		System.out.println("Where do you want to travel? :");
 		displayCountries();
 		
 		String command = "";
@@ -61,156 +67,137 @@ public class TravelManagerApp {
 		switch(command) {
 		case "Mumbai":
 			System.out.println("Namaste!!!!!");
-			System.out.println("Local date & time there is: " +india);
+			System.out.println(LOCALTIME +india);
 			System.out.println("We have a non-stop flight to Mumbai! on "
 					+ currentTimestamp.plus(12, ChronoUnit.HOURS)+ " for "+mflight);
-			command = Console.getString("Would you like to book it?");
+			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				
-				System.out.println("Your flight is booked!!! We have a hotel we can add to package for aditional discount? :");
-				command = Console.getString("Would you like to book it?");
-				
-			}
+				System.out.println(CONFIRMATION);
+				command = Console.getString(BOOK);
+				}
 			else {
-				System.out.println("We do not have any other flights available. Please try again later.");
+				System.out.println(NOFLIGHT);
 				break;
 			}
 				if (command.equalsIgnoreCase("Yes")) {
-					days = Console.getInt("how many days you would like to book it? :");
-					System.out.println("Your stay in "+hotelm+" is booked for "+days+  " nights at "+hotelmprice+" Per night");
-					
-				}
+					days = Console.getInt(DAYS);
+					System.out.println("Your stay in "+hotelm+" is booked for "+days+
+							" nights at "+hotelmprice+" Per night");
+					System.out.println(TOTALCOST+ ((hotelmprice*days) + mflight));
+					System.out.println("Confirmation no :");
+					}
 				else {
-					System.out.println("Enjoy your travel!");
-					
-					
-				}
+					System.out.println(ENJOY );
+					}
 			break;
 			
 		
 		
 		case "Newyork":
 			System.out.println("Welcome!!!");
-			System.out.println("Local date & time there is: " +currentTimestamp);
+			System.out.println(LOCALTIME +currentTimestamp);
 			System.out.println("We have a non-stop flight to NEW YORK! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+nyflight);
-			command = Console.getString("Would you like to book it?");
+			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				
-				System.out.println("Your flight is booked!!! We have a hotel we can add to package for aditional discount? :");
-				command = Console.getString("Would you like to book it?");
-				
-			}
+				System.out.println(CONFIRMATION);
+				command = Console.getString(BOOK);
+				}
 			else {
-				System.out.println("We do not have any other flights available. Please try again later.");
+				System.out.println(NOFLIGHT);
 				break;
-			}
+				}
 				if (command.equalsIgnoreCase("Yes")) {
-					days = Console.getInt("how many days you would like to book it? :");
-					System.out.println("Your stay in "+hotelNY+" is booked for "+days+  " nights at "+hotelNYprice+" Per night");
-					
+					days = Console.getInt(DAYS);
+					System.out.println("Your stay in "+hotelNY+" is booked for "+days+
+							" nights at "+hotelNYprice+" Per night");
 				}
 				else {
-					System.out.println("Enjoy your travel!");
-					
-					
+					System.out.println(ENJOY);
 				}
 				break;
 			
 			
 		case "Cape Town":
 			System.out.println("Welkom!!!!");
-			System.out.println("Local date & time there is: " +africa);
-			System.out.println("We have a non-stop flight to NEW YORK! on "
+			System.out.println(LOCALTIME +africa);
+			System.out.println("We have a non-stop flight to Capetown! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+aflight);
-			command = Console.getString("Would you like to book it?");
+			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				
-				System.out.println("Your flight is booked!!! We have a hotel we can add to package for aditional discount? :");
-				command = Console.getString("Would you like to book it?");
-				
+				System.out.println(CONFIRMATION);
+				command = Console.getString(BOOK);
 			}
 			else {
-				System.out.println("We do not have any other flights available. Please try again later.");
+				System.out.println(NOFLIGHT);
 				break;
-			}
+				}
 				if (command.equalsIgnoreCase("Yes")) {
-					days = Console.getInt("how many days you would like to book it? :");
-					System.out.println("Your stay in "+hotela+" is booked for "+days+  " nights at "+hotelaprice+" Per night");
-					
+					days = Console.getInt(DAYS);
+					System.out.println("Your stay in "+hotela+" is booked for "+days+
+							" nights at "+hotelaprice+" Per night");
 				}
 				else {
-					System.out.println("Enjoy your travel!");
-					
-					
-				}
-			
+					System.out.println(ENJOY);
+					}
 			break;
 			
+		
 		case "Dubai":
 			System.out.println("AAAA OOOOOOOO");
-			System.out.println("Local date & time there is: " +dubai);
-			System.out.println("We have a non-stop flight to NEW YORK! on "
+			System.out.println(LOCALTIME +dubai);
+			System.out.println("We have a non-stop flight to Dubai! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+dflight);
-			command = Console.getString("Would you like to book it?");
+			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				
-				System.out.println("Your flight is booked!!! We have a hotel we can add to package for aditional discount? :");
-				command = Console.getString("Would you like to book it?");
-				
+				System.out.println(CONFIRMATION);
+				command = Console.getString(BOOK);
 			}
 			else {
-				System.out.println("We do not have any other flights available. Please try again later.");
+				System.out.println(NOFLIGHT);
 				break;
-			}
+				}
 				if (command.equalsIgnoreCase("Yes")) {
-					days = Console.getInt("how many days you would like to book it? :");
-					System.out.println("Your stay in "+hoteld+" is booked for "+days+  " nights at "+hoteldprice+" Per night");
-					
+					days = Console.getInt(DAYS);
+					System.out.println("Your stay in "+hoteld+" is booked for "+days+
+							" nights at "+hoteldprice+" Per night");
 				}
 				else {
-					System.out.println("Enjoy your travel!");
-					
-					
+					System.out.println(ENJOY);
 				}
-			
 			break;
+		
 		
 		case "Sanghai":
 			System.out.println("Welcome");
-			System.out.println("Local date & time there is: " +china);
-			System.out.println("We have a non-stop flight to NEW YORK! on "
+			System.out.println(LOCALTIME +china);
+			System.out.println("We have a non-stop flight to Shanghai! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+sflight);
-			command = Console.getString("Would you like to book it?");
+			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				
-				System.out.println("Your flight is booked!!! We have a hotel we can add to package for aditional discount? :");
-				command = Console.getString("Would you like to book it?");
-				
+				System.out.println(CONFIRMATION);
+				command = Console.getString(BOOK);
 			}
 			else {
-				System.out.println("We do not have any other flights available. Please try again later.");
+				System.out.println(NOFLIGHT);
 				break;
 			}
 				if (command.equalsIgnoreCase("Yes")) {
-					days = Console.getInt("how many days you would like to book it? :");
-					System.out.println("Your stay in "+hotels+" is booked for "+days+  " nights at "+hotelsprice+" Per night");
-					
-				}
+					days = Console.getInt(DAYS);
+					System.out.println("Your stay in "+hotels+" is booked for "+days+
+							" nights at "+hotelsprice+" Per night");
+					}
 				else {
-					System.out.println("Enjoy your travel!");
-					
-					
-				}
-			
+					System.out.println(ENJOY);
+					}
 			break;
 		}
-		
-		
 		}
-		
 		System.out.println("Bye");
 
+	
+	
+	
 	}
 	private static void displayCountries() {
 		System.out.println("Cities we provide travel assiatance:");
@@ -222,5 +209,6 @@ public class TravelManagerApp {
 		System.out.println("Shanghai");
 		System.out.println("Exit");
 	}
+
 
 }
