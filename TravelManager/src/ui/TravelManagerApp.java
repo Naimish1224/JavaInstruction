@@ -1,16 +1,11 @@
 package ui;
 
-import java.nio.charset.Charset;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Random;
-
 import com.util.Console;
 
 
 public class TravelManagerApp {
-	private static final String ITEM_NOT_FOUND = "No item found for id: ";
 	private static final String LOCALTIME = "Local date & time there is: ";
 	private static final String BOOK = "Would you like to book it?";
 	private static final String CONFIRMATION = "Your flight is booked!!! "
@@ -29,6 +24,12 @@ public class TravelManagerApp {
 		LocalDateTime dubai = currentTimestamp.plus(8, ChronoUnit.HOURS);
 		LocalDateTime africa = currentTimestamp.plus(6, ChronoUnit.HOURS);
 		LocalDateTime china = currentTimestamp.plus(12, ChronoUnit.HOURS);
+		
+		String confm = "MUAI00";
+		String confn = "NYUA00";
+		String confc = "CTAI00";
+		String confs = "SNCI00";
+		String confd = "DBDI00";
 		
 		
 		
@@ -56,16 +57,20 @@ public class TravelManagerApp {
 		double sflight = 920.63;
 		double dflight = 1801.3;
 		
-		displayCountries();
-		
+		displayMenu();
+		String menu = "";
 		String command = "";
 		int days = 0;
 		while (command != "Exit") {
-			command = Console.getString("City you would like to visit? :");
+			menu = Console.getString("How can we help you? :");
 			System.out.println();
-		
-		switch(command) {
-		case "Mumbai":
+		switch (menu.toUpperCase()) {
+		case "BOOK":
+			displayCountries();
+			command = Console.getString("What city you would like to vist? :");
+			
+			switch(command.toUpperCase()) {
+			case "MUMBAI":
 			System.out.println("Namaste!!!!!");
 			System.out.println(LOCALTIME +india);
 			System.out.println("We have a non-stop flight to Mumbai! on "
@@ -84,7 +89,7 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotelm+" is booked for "+days+
 							" nights at "+hotelmprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelmprice*days) + mflight));
-					System.out.println("Confirmation no :");
+					System.out.println("Confirmation no :"+confm);
 					}
 				else {
 					System.out.println(ENJOY );
@@ -93,7 +98,7 @@ public class TravelManagerApp {
 			
 		
 		
-		case "Newyork":
+		case "NEWYORK":
 			System.out.println("Welcome!!!");
 			System.out.println(LOCALTIME +currentTimestamp);
 			System.out.println("We have a non-stop flight to NEW YORK! on "
@@ -111,6 +116,9 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotelNY+" is booked for "+days+
 							" nights at "+hotelNYprice+" Per night");
+					System.out.println(TOTALCOST+ ((hotelNYprice*days) + nyflight));
+					System.out.println("Confirmation no :"+confn);
+					
 				}
 				else {
 					System.out.println(ENJOY);
@@ -118,7 +126,7 @@ public class TravelManagerApp {
 				break;
 			
 			
-		case "Cape Town":
+		case "CAPETOWN":
 			System.out.println("Welkom!!!!");
 			System.out.println(LOCALTIME +africa);
 			System.out.println("We have a non-stop flight to Capetown! on "
@@ -136,6 +144,8 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotela+" is booked for "+days+
 							" nights at "+hotelaprice+" Per night");
+					System.out.println(TOTALCOST+ ((hotelaprice*days) + aflight));
+					System.out.println("Confirmation no :"+confc);
 				}
 				else {
 					System.out.println(ENJOY);
@@ -143,7 +153,7 @@ public class TravelManagerApp {
 			break;
 			
 		
-		case "Dubai":
+		case "DUBAI":
 			System.out.println("AAAA OOOOOOOO");
 			System.out.println(LOCALTIME +dubai);
 			System.out.println("We have a non-stop flight to Dubai! on "
@@ -161,6 +171,8 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hoteld+" is booked for "+days+
 							" nights at "+hoteldprice+" Per night");
+					System.out.println(TOTALCOST+ ((hoteldprice*days) + dflight));
+					System.out.println("Confirmation no :"+confd);
 				}
 				else {
 					System.out.println(ENJOY);
@@ -168,7 +180,7 @@ public class TravelManagerApp {
 			break;
 		
 		
-		case "Sanghai":
+		case "SANGHAI":
 			System.out.println("Welcome");
 			System.out.println(LOCALTIME +china);
 			System.out.println("We have a non-stop flight to Shanghai! on "
@@ -186,11 +198,14 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotels+" is booked for "+days+
 							" nights at "+hotelsprice+" Per night");
+					System.out.println(TOTALCOST+ ((hotelsprice*days) + sflight));
+					System.out.println("Confirmation no :"+confs);
 					}
 				else {
 					System.out.println(ENJOY);
 					}
 			break;
+		}
 		}
 		}
 		System.out.println("Bye");
@@ -204,9 +219,19 @@ public class TravelManagerApp {
 		System.out.println("==================");
 		System.out.println("Newyork");
 		System.out.println("Mumbai");
-		System.out.println("Cape Town");
+		System.out.println("Capetown");
 		System.out.println("Dubai");
 		System.out.println("Shanghai");
+		System.out.println("Exit");
+	}
+	private static void displayMenu() {
+		System.out.println("How can we help you? :");
+		System.out.println("==================");
+		System.out.println("Book Itenerary");
+		System.out.println("Find Itenerary");
+		System.out.println("Cancel Itenerary");
+		System.out.println("Contact");
+		System.out.println("Currency Caculator");
 		System.out.println("Exit");
 	}
 
