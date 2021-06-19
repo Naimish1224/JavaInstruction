@@ -2,6 +2,12 @@ package ui;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.util.Console;
 
 
@@ -25,11 +31,11 @@ public class TravelManagerApp {
 		LocalDateTime africa = currentTimestamp.plus(6, ChronoUnit.HOURS);
 		LocalDateTime china = currentTimestamp.plus(12, ChronoUnit.HOURS);
 		
-		String confm = "MUAI00";
-		String confn = "NYUA00";
-		String confc = "CTAI00";
-		String confs = "SNCI00";
-		String confd = "DBDI00";
+		long confm = Math.round(Math.floor(100000 + Math.random() * 900000));
+		long confn = Math.round(Math.floor(100000 + Math.random() * 900000));
+		long confc = Math.round(Math.floor(100000 + Math.random() * 900000));
+		long confs = Math.round(Math.floor(100000 + Math.random() * 900000));
+		long confd = Math.round(Math.floor(100000 + Math.random() * 900000));
 		
 		
 		
@@ -60,6 +66,7 @@ public class TravelManagerApp {
 		displayMenu();
 		String menu = "";
 		String command = "";
+		LinkedHashMap<Long, String> confno = new LinkedHashMap<>();
 		int days = 0;
 		while (command != "Exit") {
 			menu = Console.getString("How can we help you? :");
@@ -90,6 +97,9 @@ public class TravelManagerApp {
 							" nights at "+hotelmprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelmprice*days) + mflight));
 					System.out.println("Confirmation no :"+confm);
+					confno.put(confm, hotelm);
+					
+					System.out.println("Confirmation no"+ confno);
 					}
 				else {
 					System.out.println(ENJOY );
@@ -206,6 +216,21 @@ public class TravelManagerApp {
 					}
 			break;
 		}
+			break;
+			
+		case "FIND":
+			
+			String find = "";
+			find = Console.getString("Enter your confirmation number: ");
+			if (find.equalsIgnoreCase("MUAI00")) {
+				System.out.println("Your flight is " +mflight);
+				System.out.println("Your Hotel is "+hotelm);
+			}
+			else {
+				System.out.println("Invalid Please enter again: ");
+			}
+			break;
+			
 		}
 		}
 		System.out.println("Bye");
