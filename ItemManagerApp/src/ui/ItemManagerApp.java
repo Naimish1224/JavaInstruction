@@ -33,9 +33,9 @@ public class ItemManagerApp {
 				}
 				break;
 			case 2:
-				System.out.println("Get items by id: ");
+				System.out.println("Get items by decription: ");
 			// get by id
-				int id = Console.getInt("ID: ");
+				int id = Console.getInt("Description: ");
 				Item item = itemsDAO.get(id);
 				if(item != null) {
 					System.out.println("Item Found: "+item);

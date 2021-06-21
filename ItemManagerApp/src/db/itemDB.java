@@ -20,17 +20,16 @@ public class itemDB implements DAO<Item> {
 	@Override
 	public Item get(int id) {
 		Item item = null;
-		
-		try {
-			Statement stmt = getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery("select * from item where id ="+id);
+		String sql = "select * from item where id = ?";
+		try(PreparedStatement stmt = getConnection().prepareStatement(sql)) {
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
 				item = getItemFromRow(rs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return item;
 	}
 
@@ -38,19 +37,16 @@ public class itemDB implements DAO<Item> {
 	public List<Item> getAll() {
 		List<Item> items = new ArrayList<>();
 	
-		try {
-			Statement stmt = getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery("select * from item");
+		try(Statement stmt = getConnection().createStatement()) {
+			ResultSet rs = stmt.executeQuery("select * from item order by id");
 			while(rs.next()) {
 				Item item = getItemFromRow(rs);
 				items.add(item);
-				
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return items;
 	}
 
@@ -63,27 +59,51 @@ public class itemDB implements DAO<Item> {
 	}
 
 	@Override
-	public boolean add(Item t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean add(Item item) {
+		boolean success = false;
+		String sql = "insert into item (description) values (?)";
+		try (PreparedStatement stmt = getConnection().prepareStatement(sql)){
+			stmt.setString(1, t.getDiscription());
+			stmt.executeUpdate();
+			int rowsAffected = stmt.executeUpdate();
+			if (rowsAffected == 1) {
+				success = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return success;
 	}
 
 	@Override
-	public boolean update(Item t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Item item) {
+	boolean success = false;
+	String sql = "update item set description = ? where id = ?";
+	try (PreparedStatement stmt = getConnection().prepareStatement(sql)){
+		stmt.setString(1, item.getDiscription());
+		stmt.setInt(2, item.getId());
+		int rowsAffected = stmt.executeUpdate();
+		if (rowsAffected == 1) {
+			success = true;
+		}
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+		return success;
 	}
 
 	@Override
 	public boolean delete(Item t) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		return success;
 	}
 
 	@Override
 	public boolean uptade(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = false;
+		return success;
 	}
 
 }
