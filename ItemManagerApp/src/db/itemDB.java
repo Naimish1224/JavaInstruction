@@ -62,15 +62,13 @@ public class itemDB implements DAO<Item> {
 	public boolean add(Item item) {
 		boolean success = false;
 		String sql = "insert into item (description) values (?)";
-		try (PreparedStatement stmt = getConnection().prepareStatement(sql)){
-			stmt.setString(1, t.getDiscription());
-			stmt.executeUpdate();
+		try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
+			stmt.setString(1, item.getDiscription());
 			int rowsAffected = stmt.executeUpdate();
 			if (rowsAffected == 1) {
 				success = true;
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return success;
@@ -78,25 +76,34 @@ public class itemDB implements DAO<Item> {
 
 	@Override
 	public boolean update(Item item) {
-	boolean success = false;
-	String sql = "update item set description = ? where id = ?";
-	try (PreparedStatement stmt = getConnection().prepareStatement(sql)){
-		stmt.setString(1, item.getDiscription());
-		stmt.setInt(2, item.getId());
-		int rowsAffected = stmt.executeUpdate();
-		if (rowsAffected == 1) {
-			success = true;
+		boolean success = false;
+		String sql = "update item set description = ? where id = ?";
+		try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
+			stmt.setString(1, item.getDiscription());
+			stmt.setInt(2, item.getId());
+			int rowsAffected = stmt.executeUpdate();
+			if (rowsAffected == 1) {
+				success = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	}
-	catch (SQLException e) {
-		e.printStackTrace();
-	}
 		return success;
 	}
 
 	@Override
-	public boolean delete(Item t) {
+	public boolean delete(Item item) {
 		boolean success = false;
+		String sql = "delete from item where id = ?";
+		try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
+			stmt.setInt(1, item.getId());
+			int rowsAffected = stmt.executeUpdate();
+			if (rowsAffected == 1) {
+				success = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return success;
 	}
 

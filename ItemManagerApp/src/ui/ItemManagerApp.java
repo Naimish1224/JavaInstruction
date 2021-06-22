@@ -33,9 +33,9 @@ public class ItemManagerApp {
 				}
 				break;
 			case 2:
-				System.out.println("Get items by decription: ");
+				System.out.println("Get items by id: ");
 			// get by id
-				int id = Console.getInt("Description: ");
+				int id = Console.getInt("ID: ");
 				Item item = itemsDAO.get(id);
 				if(item != null) {
 					System.out.println("Item Found: "+item);
@@ -44,6 +44,8 @@ public class ItemManagerApp {
 					System.out.println(ITEM_NOT_FOUND + id);
 				}
 				break;
+			
+			
 			case 3:
 				System.out.println("Add an item: ");
 			//add
@@ -64,6 +66,7 @@ public class ItemManagerApp {
 				if(item != null) {
 					String newdesc = Console.getLine("New Discription: ");
 					item.setDiscription(newdesc);
+					itemsDAO.update(item);
 					System.out.println("Item updated: ");
 				}
 				else {
