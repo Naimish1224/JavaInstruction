@@ -7,15 +7,9 @@ import java.util.List;
 import business.Movie;
 import interfrace.DAO;
 
-public class bmdbData implements DAO<Movie> {
+public class bmdbData extends BaseDb implements DAO<Movie> {
 
-	private Connection getConnection() throws SQLException {
-		String dbUrl = "jdbc:mysql://localhost:3306/bmdb";
-		String username = "bmdb_user";
-		String password = "sesame";
-		Connection conn = DriverManager.getConnection(dbUrl, username, password);
-		return conn;
-	}
+	
 
 	private Movie getMovieFromRow(ResultSet rs) throws SQLException {
 		Movie movie;

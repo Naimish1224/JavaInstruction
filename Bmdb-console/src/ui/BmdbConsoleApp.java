@@ -2,8 +2,6 @@ package ui;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Scanner;
 import com.util.Console;
 
 import business.Actor;
@@ -211,9 +209,7 @@ public class BmdbConsoleApp {
 				break;
 			}
 		}
-
 		System.out.println("Bye");
-
 	}
 	
 	private static void msg(String string) {

@@ -8,15 +8,9 @@ import java.util.List;
 import business.Actor;
 import interfrace.DAO;
 
-public class ActorDb implements DAO<Actor> {
+public class ActorDb extends BaseDb implements DAO<Actor> {
 
-	private Connection getConnection() throws SQLException {
-		String dbUrl = "jdbc:mysql://localhost:3306/bmdb";
-		String username = "bmdb_user";
-		String password = "sesame";
-		Connection conn = DriverManager.getConnection(dbUrl, username, password);
-		return conn;
-	}
+
 
 	private Actor getActorFromRow(ResultSet rs) throws SQLException {
 		Actor actor;
