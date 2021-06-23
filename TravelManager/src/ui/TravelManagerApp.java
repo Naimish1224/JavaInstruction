@@ -2,12 +2,7 @@ package ui;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.util.Console;
 
 
@@ -22,6 +17,7 @@ public class TravelManagerApp {
 	private static final String ENJOY ="Enjoy your travel!";
 	private static final String TOTALCOST = "Your total cost for package is ";
 	
+	@SuppressWarnings("unlikely-arg-type")
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Travel App!");
 		System.out.println();
@@ -31,13 +27,7 @@ public class TravelManagerApp {
 		LocalDateTime africa = currentTimestamp.plus(6, ChronoUnit.HOURS);
 		LocalDateTime china = currentTimestamp.plus(12, ChronoUnit.HOURS);
 		
-		long confm = Math.round(Math.floor(100000 + Math.random() * 900000));
-		long confn = Math.round(Math.floor(100000 + Math.random() * 900000));
-		long confc = Math.round(Math.floor(100000 + Math.random() * 900000));
-		long confs = Math.round(Math.floor(100000 + Math.random() * 900000));
-		long confd = Math.round(Math.floor(100000 + Math.random() * 900000));
-		
-		
+		long confno = Math.round(Math.floor(100000 + Math.random() * 900000));
 		
 		double dollar = 1.00;
 		double rupee = 70.11;
@@ -45,14 +35,19 @@ public class TravelManagerApp {
 		double rand = 14.32;
 		double dirham = 3.67;
 		
+		String flightNY = "UA 0000";
 		String hotelNY = "Hilton Garden Inn - Manhattan (4*)";
 		double hotelNYprice = 99.00;
+		String flightm = "AI 2200";
 		String hotelm = "TAJ Resort - Juhu Beach (4*)";
 		double hotelmprice = 87.00;
+		String flightd = "DB 0890";
 		String hoteld = "Burj Al Arab - Palm Island (7*)";
 		double hoteldprice = 402.87;
+		String flights = "CN 48";
 		String hotels = "Sang Su Resort - Sanghai (4*)";
 		double hotelsprice = 102.00;
+		String flighta = "AF 223";
 		String hotela = "Four Season Resort - Cape Town (5*)";
 		double hotelaprice = 210.00;
 		
@@ -66,7 +61,7 @@ public class TravelManagerApp {
 		displayMenu();
 		String menu = "";
 		String command = "";
-		LinkedHashMap<Long, String> confno = new LinkedHashMap<>();
+		HashMap<Long, String> reservations = new HashMap<Long, String>();
 		int days = 0;
 		while (command != "Exit") {
 			menu = Console.getString("How can we help you? :");
@@ -96,10 +91,9 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotelm+" is booked for "+days+
 							" nights at "+hotelmprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelmprice*days) + mflight));
-					System.out.println("Confirmation no :"+confm);
-					confno.put(confm, hotelm);
+					System.out.println("Confirmation no :"+confno);
+					reservations.put(confno, hotelm);
 					
-					System.out.println("Confirmation no"+ confno);
 					}
 				else {
 					System.out.println(ENJOY );
@@ -127,7 +121,7 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotelNY+" is booked for "+days+
 							" nights at "+hotelNYprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelNYprice*days) + nyflight));
-					System.out.println("Confirmation no :"+confn);
+					System.out.println("Confirmation no :"+confno);
 					
 				}
 				else {
@@ -155,7 +149,7 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotela+" is booked for "+days+
 							" nights at "+hotelaprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelaprice*days) + aflight));
-					System.out.println("Confirmation no :"+confc);
+					System.out.println("Confirmation no :"+confno);
 				}
 				else {
 					System.out.println(ENJOY);
@@ -182,7 +176,7 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hoteld+" is booked for "+days+
 							" nights at "+hoteldprice+" Per night");
 					System.out.println(TOTALCOST+ ((hoteldprice*days) + dflight));
-					System.out.println("Confirmation no :"+confd);
+					System.out.println("Confirmation no :"+confno);
 				}
 				else {
 					System.out.println(ENJOY);
@@ -209,7 +203,7 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotels+" is booked for "+days+
 							" nights at "+hotelsprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelsprice*days) + sflight));
-					System.out.println("Confirmation no :"+confs);
+					System.out.println("Confirmation no :"+confno);
 					}
 				else {
 					System.out.println(ENJOY);
@@ -220,17 +214,11 @@ public class TravelManagerApp {
 			
 		case "FIND":
 			
-			String find = "";
-			find = Console.getString("Enter your confirmation number: ");
-			if (find.equalsIgnoreCase("MUAI00")) {
-				System.out.println("Your flight is " +mflight);
-				System.out.println("Your Hotel is "+hotelm);
-			}
-			else {
-				System.out.println("Invalid Please enter again: ");
-			}
+			String find = Console.getString("Enter your confirmation number: ");
+			System.out.println(reservations.containsKey(find));
 			break;
-			
+		
+	
 		}
 		}
 		System.out.println("Bye");
@@ -255,10 +243,10 @@ public class TravelManagerApp {
 		System.out.println("Book Itenerary");
 		System.out.println("Find Itenerary");
 		System.out.println("Cancel Itenerary");
-		System.out.println("Contact");
+		System.out.println("All");
 		System.out.println("Currency Caculator");
 		System.out.println("Exit");
 	}
-
+	
 
 }
