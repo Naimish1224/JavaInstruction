@@ -27,8 +27,8 @@ public class UserDb implements DAO<User> {
 		String password = rs.getString(5);
 		String phone = rs.getString(6);
 		String email = rs.getString(7) ;
-		Integer review = rs.getInt(8) ;
-		Integer admin = rs.getInt(9) ;
+		Boolean review = rs.getBoolean(8) ;
+		Boolean admin = rs.getBoolean(9) ;
 		user = new User(firstName, lastName, username, password, phone, email, review, admin);
 		return user;
 	}
@@ -82,8 +82,8 @@ public class UserDb implements DAO<User> {
 			stmt.setString(4, user.getPassword());
 			stmt.setString(5, user.getPhone());
 			stmt.setString(6, user.getEmail());
-			stmt.setInt(7, user.getReview());
-			stmt.setInt(8, user.getAdmin());
+			stmt.setBoolean(7, user.getReview());
+			stmt.setBoolean(8, user.getAdmin());
 			
 
 			int rowsAffected = stmt.executeUpdate();
@@ -107,8 +107,8 @@ public class UserDb implements DAO<User> {
 			stmt.setString(4, user.getPassword());
 			stmt.setString(5, user.getPhone());
 			stmt.setString(6, user.getEmail());
-			stmt.setInt(7, user.getReview());
-			stmt.setInt(8, user.getAdmin());
+			stmt.setBoolean(7, user.getReview());
+			stmt.setBoolean(8, user.getAdmin());
 			stmt.setInt(9, user.getId());
 
 			int rowsAffected = stmt.executeUpdate();

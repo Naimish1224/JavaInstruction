@@ -10,15 +10,15 @@ public class User {
 	private String password;
 	private String phone;
 	private String email;
-	private int review;
-	private int admin;
+	private boolean review;
+	private boolean admin;
 	
 
 	
 
 
 	public User(String firstName, String lastName, String username, String password, String phone, String email,
-			Integer review, Integer admin) {
+			boolean review, boolean admin) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -30,6 +30,8 @@ public class User {
 		this.review = review;
 		this.admin = admin;
 	}
+
+
 
 
 	public int getId() {
@@ -102,22 +104,22 @@ public class User {
 	}
 
 
-	public int getReview() {
+	public boolean getReview() {
 		return review;
 	}
 
 
-	public void setReview(int review) {
+	public void setReview(boolean review) {
 		this.review = review;
 	}
 
 
-	public int getAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 
 
-	public void setAdmin(int admin) {
+	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 

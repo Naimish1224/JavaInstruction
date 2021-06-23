@@ -57,12 +57,9 @@ public class PRS_Console_App {
 				String pass = Console.getString("Password (5 digit): ");
 				String phone = Console.getString("Phone No: ");
 				String email = Console.getString("Email: ");
-				boolean rev = Console.getBollean("Reviewer? " , 0, 1);
-				
-				if (yesno.e0) {}
-				Integer admin = Console.getInt("Admin?: Yes/No ");
-
-				if (userDAO.add(new User(fn, ln, un, pass, phone, email, rev, admin))) {
+				boolean admin = Console.getBoolean("Admin (y/n): ");
+				boolean review = Console.getBoolean("Reviewer (y/n): ");
+				if (userDAO.add(new User(fn, ln, un, pass, phone, email, review, admin))) {
 					System.out.println("User added!");
 					
 				} else {
