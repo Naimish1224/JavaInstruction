@@ -78,8 +78,8 @@ public class TravelManagerApp {
 			case "MUMBAI":
 			System.out.println("Namaste!!!!!");
 			System.out.println(LOCALTIME +india);
-			System.out.println("We have a non-stop flight to Mumbai! on "
-					+ currentTimestamp.plus(12, ChronoUnit.HOURS)+ " for "+mflight);
+			System.out.println("We have a non-stop flight to Mumbai! on "+flightm
+					+ currentTimestamp.plus(12, ChronoUnit.HOURS)+ " for "+us.getSymbol()+mflight);
 			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
 				System.out.println(CONFIRMATION+"at "+hotelm+" for "+us.getSymbol()+hotelmprice);
@@ -113,7 +113,7 @@ public class TravelManagerApp {
 			System.out.println(LOCALTIME +currentTimestamp);
 			System.out.println("We have a non-stop flight to NEW YORK! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+nyflight);
-			command = Console.getString(BOOK);
+			command = Console.getString(BOOK+" on "+ flightNY);
 			if (command.equalsIgnoreCase("Yes")) {
 				System.out.println(CONFIRMATION+"at "+hotelNY+" for "+us.getSymbol()+hotelNYprice);
 				command = Console.getString(BOOK);
@@ -146,7 +146,7 @@ public class TravelManagerApp {
 			System.out.println(LOCALTIME +africa);
 			System.out.println("We have a non-stop flight to Capetown! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+aflight);
-			command = Console.getString(BOOK);
+			command = Console.getString(BOOK+" on "+ flighta);
 			if (command.equalsIgnoreCase("Yes")) {
 				System.out.println(CONFIRMATION+"at "+hotela+" for "+us.getSymbol()+hotelaprice);
 				command = Console.getString(BOOK);
@@ -173,7 +173,7 @@ public class TravelManagerApp {
 			System.out.println(LOCALTIME +dubai);
 			System.out.println("We have a non-stop flight to Dubai! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+dflight);
-			command = Console.getString(BOOK);
+			command = Console.getString(BOOK+" on "+ flightd);
 			if (command.equalsIgnoreCase("Yes")) {
 				System.out.println(CONFIRMATION+"at "+hoteld+" for "+us.getSymbol()+hoteldprice);
 				command = Console.getString(BOOK);
@@ -200,7 +200,7 @@ public class TravelManagerApp {
 			System.out.println(LOCALTIME +china);
 			System.out.println("We have a non-stop flight to Shanghai! on "
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+sflight);
-			command = Console.getString(BOOK);
+			command = Console.getString(BOOK+" on "+ flights);
 			if (command.equalsIgnoreCase("Yes")) {
 				System.out.println(CONFIRMATION+"at "+hotels+" for "+us.getSymbol()+hotelsprice);
 				command = Console.getString(BOOK);
@@ -238,7 +238,7 @@ public class TravelManagerApp {
 				if(listOfConfNo.contains(find) && !found) {
 					found = true;
 				} else {
-					System.out.println("No confirmation found. Invalid " + find + " no.");
+					System.out.println("No confirmation found. Invalid no.");
 					break;
 				}
 				if(found) {
