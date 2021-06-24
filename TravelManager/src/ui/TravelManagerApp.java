@@ -2,7 +2,12 @@ package ui;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import com.util.Console;
 
 
@@ -27,7 +32,7 @@ public class TravelManagerApp {
 		LocalDateTime africa = currentTimestamp.plus(6, ChronoUnit.HOURS);
 		LocalDateTime china = currentTimestamp.plus(12, ChronoUnit.HOURS);
 		
-		long confno = Math.round(Math.floor(100000 + Math.random() * 900000));
+		int confno = (int) Math.round(Math.floor(100000 + Math.random() * 900000));
 		
 		double dollar = 1.00;
 		double rupee = 70.11;
@@ -39,7 +44,7 @@ public class TravelManagerApp {
 		String hotelNY = "Hilton Garden Inn - Manhattan (4*)";
 		double hotelNYprice = 99.00;
 		String flightm = "AI 2200";
-		String hotelm = "TAJ Resort - Juhu Beach (4*)";
+		String hotelm = "TAJ Resort - Juhu Beach (5*)";
 		double hotelmprice = 87.00;
 		String flightd = "DB 0890";
 		String hoteld = "Burj Al Arab - Palm Island (7*)";
@@ -61,7 +66,7 @@ public class TravelManagerApp {
 		displayMenu();
 		String menu = "";
 		String command = "";
-		HashMap<Long, String> reservations = new HashMap<Long, String>();
+		HashMap<Integer, String> reservations = new HashMap<>();
 		int days = 0;
 		while (command != "Exit") {
 			menu = Console.getString("How can we help you? :");
@@ -91,8 +96,11 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotelm+" is booked for "+days+
 							" nights at "+hotelmprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelmprice*days) + mflight));
-					System.out.println("Confirmation no :"+confno);
-					reservations.put(confno, hotelm);
+					int confirmationno = (int)Math.round(Math.floor(100000 + Math.random() * 900000)) ;
+					System.out.println("Confirmation no :"+confirmationno);
+					reservations.put(confirmationno, hotelm);
+					System.out.println(reservations);
+
 					
 					}
 				else {
@@ -121,7 +129,12 @@ public class TravelManagerApp {
 					System.out.println("Your stay in "+hotelNY+" is booked for "+days+
 							" nights at "+hotelNYprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelNYprice*days) + nyflight));
-					System.out.println("Confirmation no :"+confno);
+					int confirmationno =(int) Math.round(Math.floor(100000 + Math.random() * 900000));
+					System.out.println("Confirmation no :"+confirmationno);
+					reservations.put(confirmationno, hotelNY);
+					System.out.println(reservations);
+
+					
 					
 				}
 				else {
@@ -204,6 +217,7 @@ public class TravelManagerApp {
 							" nights at "+hotelsprice+" Per night");
 					System.out.println(TOTALCOST+ ((hotelsprice*days) + sflight));
 					System.out.println("Confirmation no :"+confno);
+					
 					}
 				else {
 					System.out.println(ENJOY);
@@ -212,10 +226,33 @@ public class TravelManagerApp {
 		}
 			break;
 			
-		case "FIND":
+		case "FIND":	
+			if(reservations.size() > 0 ) {
+			Set<Integer> keyset = reservations.keySet();
+			ArrayList<Integer> listOfConfNo = new ArrayList <Integer>(keyset);
+			Collection<String> values = reservations.values();
+			ArrayList<String> listOfHotels = new ArrayList <String>(values);
+//			System.out.println("list of confNos" + listOfConfNo);
+//			System.out.println("list Of Hotels" + listOfHotels);
+			Integer find = Console.getInt("Enter your conf no. :");
+			boolean found = false;
+			for (int i=0; i < listOfConfNo.size(); i++) {
+				if(listOfConfNo.contains(find) && !found) {
+					found = true;
+				} else {
+					System.out.println("no confirmation found with the given " + find);
+					break;
+				}
+				if(found) {
+					int position = listOfConfNo.indexOf(find);
+					System.out.println("Your confirmating no is "+find +". Your hotel is booked in "+listOfHotels.get(position));
+					break;
+				}
+				
+			}
 			
-			String find = Console.getString("Enter your confirmation number: ");
-			System.out.println(reservations.containsKey(find));
+			}
+			
 			break;
 		
 	
