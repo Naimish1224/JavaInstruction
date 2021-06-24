@@ -2,27 +2,24 @@ package ui;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.Currency;  
+
 
 import com.util.Console;
 
 
 public class TravelManagerApp {
 	private static final String LOCALTIME = "Local date & time there is: ";
-	private static final String BOOK = "Would you like to book it?";
+	private static final String BOOK = "Book it?";
 	private static final String CONFIRMATION = "Your flight is booked!!! "
-			+ "We have a hotel we can add to package for aditional discount? :";
+			+ "Book Hotel? ";
 	private static final String NOFLIGHT = "We do not have any other flights available."
 			+ " Please try again later.";
 	private static final String DAYS = "how many days you would like to book it? :";
 	private static final String ENJOY ="Enjoy your travel!";
 	private static final String TOTALCOST = "Your total cost for package is ";
 	
-	@SuppressWarnings("unlikely-arg-type")
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Travel App!");
 		System.out.println();
@@ -34,6 +31,7 @@ public class TravelManagerApp {
 		
 		int confno = (int) Math.round(Math.floor(100000 + Math.random() * 900000));
 		
+		Currency us = Currency.getInstance(Locale.US);  
 		double dollar = 1.00;
 		double rupee = 70.11;
 		double yen = 6.45;
@@ -41,19 +39,19 @@ public class TravelManagerApp {
 		double dirham = 3.67;
 		
 		String flightNY = "UA 0000";
-		String hotelNY = "Hilton Garden Inn - Manhattan (4*)";
+		String hotelNY = "Hilton Garden Inn - Manhattan (4*) & flight UA-0000";
 		double hotelNYprice = 99.00;
 		String flightm = "AI 2200";
-		String hotelm = "TAJ Resort - Juhu Beach (5*)";
+		String hotelm = "TAJ Resort - Juhu Beach (5*) & flight AI-2200";
 		double hotelmprice = 87.00;
 		String flightd = "DB 0890";
-		String hoteld = "Burj Al Arab - Palm Island (7*)";
+		String hoteld = "Burj Al Arab - Palm Island (7*) & flight DB-0890";
 		double hoteldprice = 402.87;
 		String flights = "CN 48";
-		String hotels = "Sang Su Resort - Sanghai (4*)";
+		String hotels = "Sang Su Resort - Sanghai (4*) & flight CN-48";
 		double hotelsprice = 102.00;
 		String flighta = "AF 223";
-		String hotela = "Four Season Resort - Cape Town (5*)";
+		String hotela = "Four Season Resort - Cape Town (5*) & flight AF-223";
 		double hotelaprice = 210.00;
 		
 		
@@ -84,7 +82,7 @@ public class TravelManagerApp {
 					+ currentTimestamp.plus(12, ChronoUnit.HOURS)+ " for "+mflight);
 			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				System.out.println(CONFIRMATION);
+				System.out.println(CONFIRMATION+"at "+hotelm+" for "+us.getSymbol()+hotelmprice);
 				command = Console.getString(BOOK);
 				}
 			else {
@@ -94,12 +92,12 @@ public class TravelManagerApp {
 				if (command.equalsIgnoreCase("Yes")) {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotelm+" is booked for "+days+
-							" nights at "+hotelmprice+" Per night");
-					System.out.println(TOTALCOST+ ((hotelmprice*days) + mflight));
+							" nights at "+us.getSymbol()+hotelmprice+" Per night");
+					System.out.println(TOTALCOST+us.getSymbol()+ ((hotelmprice*days) + mflight));
 					int confirmationno = (int)Math.round(Math.floor(100000 + Math.random() * 900000)) ;
 					System.out.println("Confirmation no :"+confirmationno);
 					reservations.put(confirmationno, hotelm);
-					System.out.println(reservations);
+//					System.out.println(reservations);
 
 					
 					}
@@ -117,7 +115,7 @@ public class TravelManagerApp {
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+nyflight);
 			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				System.out.println(CONFIRMATION);
+				System.out.println(CONFIRMATION+"at "+hotelNY+" for "+us.getSymbol()+hotelNYprice);
 				command = Console.getString(BOOK);
 				}
 			else {
@@ -128,7 +126,7 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotelNY+" is booked for "+days+
 							" nights at "+hotelNYprice+" Per night");
-					System.out.println(TOTALCOST+ ((hotelNYprice*days) + nyflight));
+					System.out.println(TOTALCOST+us.getSymbol()+((hotelNYprice*days) + nyflight));
 					int confirmationno =(int) Math.round(Math.floor(100000 + Math.random() * 900000));
 					System.out.println("Confirmation no :"+confirmationno);
 					reservations.put(confirmationno, hotelNY);
@@ -150,7 +148,7 @@ public class TravelManagerApp {
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+aflight);
 			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				System.out.println(CONFIRMATION);
+				System.out.println(CONFIRMATION+"at "+hotela+" for "+us.getSymbol()+hotelaprice);
 				command = Console.getString(BOOK);
 			}
 			else {
@@ -161,7 +159,7 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotela+" is booked for "+days+
 							" nights at "+hotelaprice+" Per night");
-					System.out.println(TOTALCOST+ ((hotelaprice*days) + aflight));
+					System.out.println(TOTALCOST+us.getSymbol()+ ((hotelaprice*days) + aflight));
 					System.out.println("Confirmation no :"+confno);
 				}
 				else {
@@ -177,7 +175,7 @@ public class TravelManagerApp {
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+dflight);
 			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				System.out.println(CONFIRMATION);
+				System.out.println(CONFIRMATION+"at "+hoteld+" for "+us.getSymbol()+hoteldprice);
 				command = Console.getString(BOOK);
 			}
 			else {
@@ -188,7 +186,7 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hoteld+" is booked for "+days+
 							" nights at "+hoteldprice+" Per night");
-					System.out.println(TOTALCOST+ ((hoteldprice*days) + dflight));
+					System.out.println(TOTALCOST+us.getSymbol()+ ((hoteldprice*days) + dflight));
 					System.out.println("Confirmation no :"+confno);
 				}
 				else {
@@ -204,7 +202,7 @@ public class TravelManagerApp {
 					+ currentTimestamp.plus(6, ChronoUnit.HOURS)+ " for "+sflight);
 			command = Console.getString(BOOK);
 			if (command.equalsIgnoreCase("Yes")) {
-				System.out.println(CONFIRMATION);
+				System.out.println(CONFIRMATION+"at "+hotels+" for "+us.getSymbol()+hotelsprice);
 				command = Console.getString(BOOK);
 			}
 			else {
@@ -215,7 +213,7 @@ public class TravelManagerApp {
 					days = Console.getInt(DAYS);
 					System.out.println("Your stay in "+hotels+" is booked for "+days+
 							" nights at "+hotelsprice+" Per night");
-					System.out.println(TOTALCOST+ ((hotelsprice*days) + sflight));
+					System.out.println(TOTALCOST+us.getSymbol()+ ((hotelsprice*days) + sflight));
 					System.out.println("Confirmation no :"+confno);
 					
 					}
@@ -240,12 +238,12 @@ public class TravelManagerApp {
 				if(listOfConfNo.contains(find) && !found) {
 					found = true;
 				} else {
-					System.out.println("no confirmation found with the given " + find);
+					System.out.println("No confirmation found. Invalid " + find + " no.");
 					break;
 				}
 				if(found) {
 					int position = listOfConfNo.indexOf(find);
-					System.out.println("Your confirmating no is "+find +". Your hotel is booked in "+listOfHotels.get(position));
+					System.out.println("Your confirmating no is "+find +". Your package is booked "+listOfHotels.get(position));
 					break;
 				}
 				
@@ -254,7 +252,7 @@ public class TravelManagerApp {
 			}
 			
 			break;
-		
+		case "CONVERTER":
 	
 		}
 		}
@@ -277,11 +275,9 @@ public class TravelManagerApp {
 	private static void displayMenu() {
 		System.out.println("How can we help you? :");
 		System.out.println("==================");
-		System.out.println("Book Itenerary");
-		System.out.println("Find Itenerary");
-		System.out.println("Cancel Itenerary");
+		System.out.println("Book: ");
+		System.out.println("Find: ");
 		System.out.println("All");
-		System.out.println("Currency Caculator");
 		System.out.println("Exit");
 	}
 	
